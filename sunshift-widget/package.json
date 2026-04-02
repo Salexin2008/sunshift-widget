@@ -1,0 +1,14 @@
+{
+  "name": "sunshift-widget",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Embeddable website chat widget with a server-side OpenAI proxy.",
+  "scripts": {
+    "start": "node server.js",
+    "start:local": "node --env-file=.env server.js",
+    "test": "node --test server.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

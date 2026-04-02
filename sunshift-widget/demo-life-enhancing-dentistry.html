@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life Enhancing Dentistry Demo | SunShift Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Nunito", sans-serif;
+    color: #24406f;
+    background:
+      radial-gradient(circle at top right, rgba(84, 152, 255, 0.15), transparent 30%),
+      linear-gradient(180deg, #f7fbff 0%, #eef5ff 100%);
+  }
+  .page-shell {
+    min-height: 100vh;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 48px;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 115, 232, 0.08);
+    position: sticky;
+    top: 0;
+  }
+  .brand {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    color: #1a73e8;
+  }
+  .brand span { color: #1f3057; }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: #24406f;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .nav-cta,
+  .hero-actions a,
+  .contact button {
+    background: linear-gradient(135deg, #1a73e8, #1558b0);
+    color: #fff;
+    text-decoration: none;
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 22px;
+    font-weight: 800;
+    font-size: 15px;
+    box-shadow: 0 14px 28px rgba(26, 115, 232, 0.18);
+    cursor: pointer;
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 420px);
+    gap: 40px;
+    align-items: center;
+    padding: 72px 48px 48px;
+  }
+  .eyebrow {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #ddecff;
+    color: #1a73e8;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.5rem, 5vw, 4.3rem);
+    line-height: 1.05;
+    color: #1d2c57;
+  }
+  h1 span { color: #1a73e8; }
+  .hero-copy p {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 650px;
+    color: #50658e;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+  .hero-actions .secondary {
+    background: transparent;
+    color: #1a73e8;
+    border: 2px solid #1a73e8;
+    box-shadow: none;
+  }
+  .hero-card {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(26, 115, 232, 0.1);
+    border-radius: 28px;
+    padding: 26px;
+    box-shadow: 0 28px 40px rgba(20, 54, 110, 0.08);
+  }
+  .hero-card h2 {
+    font-size: 18px;
+    color: #1d2c57;
+    margin-bottom: 16px;
+  }
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid #ecf2ff;
+    font-size: 14px;
+  }
+  .hours-row:last-child { border-bottom: 0; }
+  .hours-row strong { color: #1d2c57; }
+  .hours-row.closed span:last-child {
+    color: #d15454;
+    font-weight: 700;
+  }
+  .contact-chip {
+    margin-top: 18px;
+    border-radius: 18px;
+    background: #eef5ff;
+    padding: 14px;
+  }
+  .contact-chip a {
+    text-decoration: none;
+    color: #1a73e8;
+    font-size: 22px;
+    font-weight: 800;
+  }
+  .stats,
+  .services,
+  .about,
+  .reviews,
+  .contact {
+    padding: 28px 48px 72px;
+  }
+  .stats-grid,
+  .service-grid,
+  .review-grid,
+  .contact-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow: hidden;
+    border-radius: 26px;
+    background: linear-gradient(135deg, #1a73e8, #0f4d9b);
+    color: #fff;
+  }
+  .stat {
+    padding: 28px 20px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .stat:last-child { border-right: 0; }
+  .stat strong {
+    display: block;
+    font-size: 32px;
+    font-weight: 800;
+  }
+  .stat span {
+    display: block;
+    margin-top: 6px;
+    opacity: 0.8;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .section-intro {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 34px;
+  }
+  .section-intro .label {
+    text-transform: uppercase;
+    color: #1a73e8;
+    letter-spacing: 0.1em;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .section-intro h2 {
+    font-family: "Playfair Display", serif;
+    color: #1d2c57;
+    font-size: 38px;
+    margin-top: 10px;
+  }
+  .section-intro p {
+    color: #5d7198;
+    line-height: 1.7;
+    margin-top: 14px;
+  }
+  .service-grid,
+  .review-grid,
+  .contact-grid {
+    display: grid;
+    gap: 22px;
+  }
+  .service-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .service-card,
+  .review-card,
+  .contact-card,
+  .about-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(26, 115, 232, 0.08);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 18px 28px rgba(15, 41, 90, 0.06);
+  }
+  .service-card h3,
+  .contact-card h3 {
+    color: #1d2c57;
+    margin: 12px 0 10px;
+  }
+  .service-card p,
+  .review-card p,
+  .contact-card p,
+  .about-copy p,
+  .about-card p {
+    color: #5d7198;
+    line-height: 1.7;
+  }
+  .about {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 360px);
+    gap: 26px;
+    align-items: start;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  .about h2 {
+    font-family: "Playfair Display", serif;
+    color: #1d2c57;
+    font-size: 38px;
+    margin-bottom: 18px;
+  }
+  .tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .tag {
+    border-radius: 999px;
+    padding: 8px 14px;
+    background: #ddecff;
+    color: #1a73e8;
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .doctor-badge {
+    width: 72px;
+    height: 72px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4a9eff, #1a73e8);
+    color: #fff;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+  .review-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  .stars {
+    color: #f4ab1f;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .contact {
+    text-align: center;
+  }
+  .contact-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin-top: 26px;
+  }
+  footer {
+    padding: 24px 48px 40px;
+    text-align: center;
+    color: #6d7fa3;
+    font-size: 14px;
+  }
+  footer a {
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: 800;
+  }
+  @media (max-width: 900px) {
+    nav,
+    .hero,
+    .stats,
+    .services,
+    .reviews,
+    .contact,
+    footer {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .hero,
+    .about {
+      grid-template-columns: 1fr;
+    }
+    .nav-links {
+      display: none;
+    }
+    .stats-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .stat:nth-child(2) {
+      border-right: 0;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page-shell">
+    <nav>
+      <div class="brand">Life Enhancing <span>Dentistry</span></div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="nav-cta" href="tel:4072059544">Book Appointment</a>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Lake Nona's trusted neighborhood dental office</div>
+        <h1>A smile that <span>enhances</span> your life</h1>
+        <p>Life Enhancing Dentistry combines modern dental care with a calm, relationship-first experience. Dr. Nadya Aldochine and her team serve Eagle Creek and Lake Nona families in English, Spanish, and Russian.</p>
+        <div class="hero-actions">
+          <a href="tel:4072059544">Call Now</a>
+          <a class="secondary" href="#contact">Ask the 24/7 Chat</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>Office Hours</h2>
+        <div class="hours-row"><strong>Monday</strong><span>10:00 AM - 7:00 PM</span></div>
+        <div class="hours-row"><strong>Tuesday</strong><span>7:00 AM - 3:00 PM</span></div>
+        <div class="hours-row"><strong>Wednesday</strong><span>7:00 AM - 3:00 PM</span></div>
+        <div class="hours-row closed"><strong>Thursday</strong><span>Closed</span></div>
+        <div class="hours-row"><strong>Friday</strong><span>8:00 AM - 4:00 PM</span></div>
+        <div class="hours-row"><strong>Saturday</strong><span>8:00 AM - 2:00 PM</span></div>
+        <div class="hours-row closed"><strong>Sunday</strong><span>Closed</span></div>
+        <div class="contact-chip">
+          <div>Call or text anytime</div>
+          <a href="tel:4072059544">(407) 205-9544</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="stats">
+      <div class="stats-grid">
+        <div class="stat"><strong>4.9★</strong><span>Google rating</span></div>
+        <div class="stat"><strong>300+</strong><span>5-star reviews</span></div>
+        <div class="stat"><strong>3</strong><span>Languages spoken</span></div>
+        <div class="stat"><strong>Same Day</strong><span>Emergency care</span></div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="section-intro">
+        <div class="label">What we offer</div>
+        <h2>Comprehensive dentistry without the corporate feel</h2>
+        <p>This demo site is built to make a small private practice feel polished, warm, and easy to contact, while the chat widget handles after-hours questions and captures new leads.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card"><div>🪥</div><h3>General Dentistry</h3><p>Cleanings, exams, and preventive care for long-term oral health.</p></article>
+        <article class="service-card"><div>✨</div><h3>Cosmetic Dentistry</h3><p>Whitening, veneers, and smile improvements with a natural look.</p></article>
+        <article class="service-card"><div>🦷</div><h3>Dental Implants</h3><p>Permanent-looking tooth replacement options for missing teeth.</p></article>
+        <article class="service-card"><div>🚨</div><h3>Emergency Visits</h3><p>Same-day emergency appointments when dental pain cannot wait.</p></article>
+        <article class="service-card"><div>👨‍👩‍👧</div><h3>Family Care</h3><p>Friendly care for adults, teens, and children in one local office.</p></article>
+        <article class="service-card"><div>🔬</div><h3>Oral Surgery</h3><p>Extractions and advanced procedures handled with comfort in mind.</p></article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-copy">
+        <h2>Relationship-centered care patients actually remember</h2>
+        <p>Life Enhancing Dentistry stands out because the team slows down and listens. For a private practice, that is a real advantage, and this site leans into it instead of feeling like generic dental marketing.</p>
+        <p>That same approach carries into the chat widget: calm tone, quick answers, and a direct path to book, call, or leave contact information for a callback.</p>
+        <div class="tags">
+          <span class="tag">English</span>
+          <span class="tag">Espanol</span>
+          <span class="tag">Russian</span>
+          <span class="tag">Open Saturdays</span>
+          <span class="tag">Emergency Friendly</span>
+        </div>
+      </div>
+      <aside class="about-card">
+        <div class="doctor-badge">NA</div>
+        <h3>Dr. Nadya Aldochine</h3>
+        <p>Private-practice owner and lead dentist serving Eagle Creek and Lake Nona with personalized care and multilingual support.</p>
+      </aside>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <div class="section-intro">
+        <div class="label">Patient stories</div>
+        <h2>What patients already say online</h2>
+      </div>
+      <div class="review-grid">
+        <article class="review-card"><div class="stars">★★★★★</div><p>"The best dental experience I have ever had. Everyone was warm, professional, and incredibly thorough."</p></article>
+        <article class="review-card"><div class="stars">★★★★★</div><p>"Easy parking, beautiful office, and a doctor who takes her time. I finally found my dentist."</p></article>
+        <article class="review-card"><div class="stars">★★★★★</div><p>"They are fantastic with kids and very patient with nervous patients. Highly recommend."</p></article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="section-intro">
+        <div class="label">Ready to book</div>
+        <h2>Patients can call, submit a form, or use the 24/7 chat</h2>
+        <p>This is the part of the sales pitch that matters: the website answers immediately, even when the office is closed.</p>
+      </div>
+      <div class="contact-grid">
+        <article class="contact-card"><h3>Address</h3><p>9717 Eagle Creek Center Blvd, Suite 102, Orlando, FL 32832</p></article>
+        <article class="contact-card"><h3>Phone</h3><p><a href="tel:4072059544">(407) 205-9544</a></p></article>
+        <article class="contact-card"><h3>Email</h3><p><a href="mailto:info@lifeenhancingdental.com">info@lifeenhancingdental.com</a></p></article>
+      </div>
+      <div style="margin-top: 24px;">
+        <button type="button" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Back to Top</button>
+      </div>
+    </section>
+
+    <footer>
+      Demo build by <a href="https://sunshiftdigital.com" target="_blank" rel="noreferrer">SunShift Digital</a>
+    </footer>
+  </div>
+
+  <script>
+    window.SunShiftChatConfig = {
+      siteId: "life-enhancing-dentistry",
+      apiEndpoint: "http://localhost:3000/api/chat",
+      practiceName: "Life Enhancing Dentistry",
+      assistantLabel: "24/7 Patient Assistant",
+      statusText: "Answers common questions instantly",
+      greeting: "Hi there! I can help with office hours, services, emergencies, and booking. What can I help you with?",
+      placeholder: "Ask about hours, pain, or appointments...",
+      bubbleIcon: "🦷",
+      headerIcon: "🦷",
+      accentColor: "#1a73e8",
+      accentColorDark: "#1558b0",
+      backgroundColor: "#f2f7ff",
+      phone: "(407) 205-9544",
+      brandingText: "Powered by SunShift Digital",
+      brandingUrl: "https://sunshiftdigital.com"
+    };
+  </script>
+  <script src="./widget.js"></script>
+</body>
+</html>
